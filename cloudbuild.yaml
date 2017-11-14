@@ -1,0 +1,8 @@
+teps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/{bowlesm}/ci-cd-spinnaker"]
+    env: ["PROJECT_ROOT=github.com/{bowlesm}/ci-cd-spinnaker"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/{GCP_PROJECT_ID}/ci-cd-spinnaker:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/{GCP_PROJECT_ID}/gcp-cd-codelab:$REVISION_ID"
